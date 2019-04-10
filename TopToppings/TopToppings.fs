@@ -1,7 +1,7 @@
 ﻿module TopToppings
 
 open System
-open FSharp.Data
+open FSharp.Data // NuGet FSharp.Data contains implementation of JsonProvider
 
 [<Literal>]
 let pizzaOrdersUrl = @"http://files.olo.com/pizzas.json"
