@@ -12,7 +12,7 @@ let orders = OrderData.GetSamples() |> Array.map( fun o -> o.Toppings )
 let rank = fun (count : int, total : int) -> Math.Round ( ( ( count |> double ) / ( total |> double ) ) * 100.0, 2 )
 let key = fun ( key : string[] ) -> key |> Array.sort |> String.concat ", "
 
-let orderStats = fun ( orders : string[][] ) ->
+let top20Toppings = fun ( orders : string[][] ) ->
                let orderCount = orders.Length
                orders
                |> Seq.countBy ( fun order -> key ( order ) )
@@ -21,7 +21,7 @@ let orderStats = fun ( orders : string[][] ) ->
                |> Seq.truncate 20
 
 [<EntryPoint>]
-for i in orderStats( orders ) do
+for i in top20Toppings( orders ) do
     let ( key, count, rank ) = i
     printfn "Toppings: %A, # Times Ordered: %A, Rank: %A" key count rank
 

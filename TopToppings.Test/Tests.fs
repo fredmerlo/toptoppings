@@ -29,5 +29,5 @@ let ``Key is sorted alpha ascending`` () =
 let ``Stats are grouped by topping, sorted by count desc`` () =
     let orders = data.GetSamples() |> Array.map( fun o -> o.Toppings )
     let expected = [|("pepperoni", 3, 37.5); ("feta cheese", 1, 12.5); ("bacon", 1, 12.5); ("beef, sausage", 1, 12.5); ("beef", 1, 12.5); ("jalapenos", 1, 12.5)|]
-    let actual = orderStats( orders )
+    let actual = top20Toppings( orders )
     Assert.Equal( expected, actual )
